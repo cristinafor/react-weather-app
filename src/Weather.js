@@ -12,7 +12,7 @@ export default function Weather(props) {
       ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny.png",
+      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`,
       description: response.data.weather[0].description,
       date: new Date(response.data.dt * 1000),
       feels: response.data.main.feels_like,
