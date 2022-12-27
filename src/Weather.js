@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
-import WeatherInfo from "./WeatherInfo";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -10,20 +11,21 @@ export default function Weather(props) {
     console.log(response.data);
     setWeatherData({
       ready: true,
-      temperature: response.data.main.temp,
-      humidity: response.data.main.humidity,
-      icon: response.data.weather[0].icon,
-      description: response.data.weather[0].description,
-      date: new Date(response.data.dt * 1000),
-      feels: response.data.main.feels_like,
+      coordinates: response.data.coordinates,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
+      icon: response.data.condition.icon,
+      description: response.data.condition.description,
+      date: new Date(response.data.time * 1000),
+      feels: response.data.temperature.feels_like,
       wind: response.data.wind.speed,
-      city: response.data.name,
+      city: response.data.city,
     });
   }
 
   function search() {
-    const apiKey = "aef208e4266d921b0a65e7200cab5d80";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const apiKey = "f53efe313cao9b5991a2t4351875fa01";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -60,6 +62,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
