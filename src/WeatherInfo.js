@@ -31,6 +31,7 @@ export default function WeatherInfo(props) {
             <li>Wind: {Math.round(props.data.wind)} km/h</li>
           </ul>
         </div>
+        <br></br>
       </div>
     </div>
   );
