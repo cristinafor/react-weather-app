@@ -1,8 +1,8 @@
 .Weather {
+  background-color: #c0e9e8;
   border: 1px solid #dadde1;
   padding: 16px;
   border-radius: 4px;
-  background-image: url(Images/Sfondo-react.png);
 }
 
 .Weather form {
@@ -47,4 +47,13 @@
   margin-top: 6px;
   padding-left: 6px;
   vertical-align: top;
+}
+
+.Weather .btn {
+  background-color: #0abab5;
+  color: white;
+}
+
+.Weather .WeatherIcon {
+  float: left;
 }
